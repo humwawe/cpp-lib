@@ -7,4 +7,5 @@ include_directories(src/util)
 
 add_executable(cpp_lib src/graph/dijkstra.cpp
     src/math/mint.cpp
+    src/math/prime.cpp
 )

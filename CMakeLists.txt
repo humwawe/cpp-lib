@@ -10,4 +10,5 @@ add_executable(cpp_lib src/graph/dijkstra.cpp
     src/math/prime.cpp
     src/ds/dsu.cpp
     src/graph/hld.cpp
+    src/bit/bo.cpp
 )

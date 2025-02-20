@@ -13,4 +13,6 @@ add_executable(cpp_lib src/graph/dijkstra.cpp
     src/bit/bo.cpp
     src/ds/fenwick.cpp
     src/str/hash.cpp
+    src/graph/mcf.cpp
+    src/graph/mf.cpp
 )

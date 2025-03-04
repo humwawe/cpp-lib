@@ -4,7 +4,7 @@
 template<typename T>
 struct Fenwick {
   int n{};
-  std::vector<T> a;
+  vector<T> a;
 
   Fenwick(int n_ = 0) {
     init(n_);

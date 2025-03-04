@@ -17,4 +17,5 @@ add_executable(cpp_lib src/graph/dijkstra.cpp
     src/graph/mf.cpp
     src/math/binomial.cpp
     src/math/gcd.cpp
+    src/ds/trie.cpp
 )

@@ -20,4 +20,5 @@ add_executable(cpp_lib src/graph/dijkstra.cpp
     src/ds/trie.cpp
     src/str/z.cpp
     src/ds/segt.cpp
+    src/dp/nums.cpp
 )

@@ -1,18 +1,25 @@
 #include<cpp-util.h>
 
 
-long long solve(int x) {
+vector<int> trans(int v) {
   vector<int> nums;
-  while (x > 0) {
-    nums.push_back(x % 10);
-    x /= 10;
+  while (v > 0) {
+    nums.push_back(v % 10);
+    v /= 10;
   }
+  return nums;
+};
+
+//[low high]
+//solve(high) - solve(low-1)
+long long solve(int x) {
+  vector<int> nums = trans(x);
   int n = nums.size();
   vector memo(n, vector(1 << n, -1ll));
 
   function<long long(int, int, bool, bool)> dfs = [&](int i, int st, bool limit, bool lead) {
     // 算到num的最后一位
-    if (i == nums.size()) {
+    if (i == n) {
       // 考虑能否取 0
       return lead ? 0 : 1ll;
     }

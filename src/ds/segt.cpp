@@ -61,6 +61,7 @@ struct SegmentTree {
   }
 
   Info rangeQuery(int p, int l, int r, int x, int y) {
+    // merge 注意有可能某一侧返回默认的 info()
     if (l >= y || r <= x) {
       return Info();
     }
@@ -71,6 +72,7 @@ struct SegmentTree {
     return rangeQuery(2 * p, l, m, x, y) + rangeQuery(2 * p + 1, m, r, x, y);
   }
 
+  // [l,r)
   Info rangeQuery(int l, int r) {
     return rangeQuery(1, 0, n, l, r);
   }

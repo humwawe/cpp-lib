@@ -11,9 +11,9 @@ struct MaxFlow {
   };
 
   int n;
-  std::vector<_Edge> e;
-  std::vector<std::vector<int>> g;
-  std::vector<int> cur, h;
+  vector<_Edge> e;
+  vector<vector<int>> g;
+  vector<int> cur, h;
 
   MaxFlow() {
   }
@@ -32,7 +32,7 @@ struct MaxFlow {
 
   bool bfs(int s, int t) {
     h.assign(n, -1);
-    std::queue<int> que;
+    queue<int> que;
     h[s] = 0;
     que.push(s);
     while (!que.empty()) {
@@ -61,7 +61,7 @@ struct MaxFlow {
       const int j = g[u][i];
       auto [v, c] = e[j];
       if (c > 0 && h[v] == h[u] + 1) {
-        auto a = dfs(v, t, std::min(r, c));
+        auto a = dfs(v, t, min(r, c));
         e[j].cap -= a;
         e[j ^ 1].cap += a;
         r -= a;
@@ -84,13 +84,13 @@ struct MaxFlow {
     T ans = 0;
     while (bfs(s, t)) {
       cur.assign(n, 0);
-      ans += dfs(s, t, std::numeric_limits<T>::max());
+      ans += dfs(s, t, numeric_limits<T>::max());
     }
     return ans;
   }
 
-  std::vector<bool> minCut() {
-    std::vector<bool> c(n);
+  vector<bool> minCut() {
+    vector<bool> c(n);
     for (int i = 0; i < n; i++) {
       c[i] = (h[i] != -1);
     }
@@ -104,8 +104,8 @@ struct MaxFlow {
     T flow;
   };
 
-  std::vector<Edge> edges() {
-    std::vector<Edge> a;
+  vector<Edge> edges() {
+    vector<Edge> a;
     for (int i = 0; i < e.size(); i += 2) {
       Edge x;
       x.from = e[i + 1].to;

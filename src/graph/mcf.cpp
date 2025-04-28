@@ -12,15 +12,15 @@ struct MinCostFlow {
   };
 
   int n;
-  std::vector<_Edge> e;
-  std::vector<std::vector<int>> g;
-  std::vector<T> h, dis;
-  std::vector<int> pre;
+  vector<_Edge> e;
+  vector<vector<int>> g;
+  vector<T> h, dis;
+  vector<int> pre;
 
   bool dijkstra(int s, int t) {
-    dis.assign(n, std::numeric_limits<T>::max());
+    dis.assign(n, numeric_limits<T>::max());
     pre.assign(n, -1);
-    std::priority_queue<std::pair<T, int>, std::vector<std::pair<T, int>>, std::greater<std::pair<T, int>>> que;
+    priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T, int>>> que;
     dis[s] = 0;
     que.emplace(0, s);
     while (!que.empty()) {
@@ -41,7 +41,7 @@ struct MinCostFlow {
         }
       }
     }
-    return dis[t] != std::numeric_limits<T>::max();
+    return dis[t] != numeric_limits<T>::max();
   }
 
   MinCostFlow() {
@@ -64,7 +64,7 @@ struct MinCostFlow {
     e.emplace_back(u, 0, -cost);
   }
 
-  std::pair<T, T> flow(int s, int t) {
+  pair<T, T> flow(int s, int t) {
     T flow = 0;
     T cost = 0;
     h.assign(n, 0);
@@ -72,9 +72,9 @@ struct MinCostFlow {
       for (int i = 0; i < n; ++i) {
         h[i] += dis[i];
       }
-      T aug = std::numeric_limits<int>::max();
+      T aug = numeric_limits<int>::max();
       for (int i = t; i != s; i = e[pre[i] ^ 1].to) {
-        aug = std::min(aug, e[pre[i]].cap);
+        aug = min(aug, e[pre[i]].cap);
       }
       for (int i = t; i != s; i = e[pre[i] ^ 1].to) {
         e[pre[i]].cap -= aug;
@@ -83,7 +83,7 @@ struct MinCostFlow {
       flow += aug;
       cost += aug * h[t];
     }
-    return std::make_pair(flow, cost);
+    return make_pair(flow, cost);
   }
 
   struct Edge {
@@ -94,8 +94,8 @@ struct MinCostFlow {
     T flow;
   };
 
-  std::vector<Edge> edges() {
-    std::vector<Edge> a;
+  vector<Edge> edges() {
+    vector<Edge> a;
     for (int i = 0; i < e.size(); i += 2) {
       Edge x;
       x.from = e[i + 1].to;

@@ -81,6 +81,8 @@ void _out(Head H, Tail... T) {
   _out(T...);
 }
 
+#define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", _out(__VA_ARGS__)
+
 // #ifdef LOCAL
 // #include "debug.h"
 // #else

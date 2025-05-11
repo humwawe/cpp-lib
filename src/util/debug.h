@@ -7,19 +7,19 @@ string to_string(tuple<A, B, C> p);
 template<typename A, typename B, typename C, typename D>
 string to_string(tuple<A, B, C, D> p);
 
-string to_string(const string &s) {
+inline string to_string(const string &s) {
   return '"' + s + '"';
 }
 
-string to_string(const char *s) {
+inline string to_string(const char *s) {
   return to_string((string) s);
 }
 
-string to_string(char c) {
+inline string to_string(char c) {
   return "'" + string{c} + "'";
 }
 
-string to_string(bool b) {
+inline string to_string(bool b) {
   return (b ? "true" : "false");
 }
 
@@ -64,7 +64,7 @@ string to_string(tuple<A, B, C, D> p) {
          to_string(get<3>(p)) + ")";
 }
 
-void _out() { cerr << endl; }
+inline void _out() { cerr << endl; }
 
 template<typename Head, typename... Tail>
 void _out(Head H, Tail... T) {

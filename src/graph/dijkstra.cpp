@@ -3,7 +3,8 @@
 
 vector<i64> dijkstra(vector<vector<pair<int, i64>>> graph, int source) {
   int n = graph.size();
-  vector<i64> dist(n, LONG_MAX);
+  i64 inf = 1e18;
+  vector<i64> dist(n, inf);
   dist[source] = 0;
   priority_queue<pair<i64, int>, vector<pair<i64, int>>, greater<>> pq;
   vector<bool> vis(n, false);

@@ -23,4 +23,5 @@ add_executable(cpp_lib src/graph/dijkstra.cpp
     src/dp/nums.cpp
     src/math/matrix.cpp
     src/ds/st.cpp
+    src/math/bignum.cpp
 )
